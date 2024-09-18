@@ -19,6 +19,8 @@ spec:
           image: iansilvasptech/microservice-account
           ports:
             - containerPort: 8080
+          imagePullSecrets:
+            name: microservices-secret
           env:
             - name: SPRING_APPLICATION_NAME
               valueFrom:

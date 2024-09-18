@@ -17,6 +17,8 @@ spec:
       containers:
         - name: eurekaserver
           image: iansilvasptech/eureka-server
+          ports:
+           - containerPort: 8070
           env:
             - name: SPRING_APPLICATION_NAME
               valueFrom:
