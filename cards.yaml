@@ -39,3 +39,16 @@ spec:
               configMapKeyRef:
                 name: microservices-configmap
                 key: SPRING_CONFIG_IMPORT
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cards
+spec:
+  selector:
+    app: cards
+  type: ClusterIP
+  ports:
+   - protocol: TCP
+     port: 9000
+     targetPort: 9000
