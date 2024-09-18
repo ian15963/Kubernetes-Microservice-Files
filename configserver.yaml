@@ -20,7 +20,7 @@ spec:
           ports:
             - containerPort: 8071
       imagePullSecrets:
-        - name: configserver-secret
+        - name: microservices-secret
 ---
 
 apiVersion: v1

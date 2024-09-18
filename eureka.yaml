@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: eurekaserver
+  labels:
+    app: eurekaserver
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: eurekaserver
+  template:
+    metadata:
+      labels:
+        app: eurekaserver
+    spec:
+      containers:
+        - name: eurekaserver
+          image: iansilvasptech/eureka-server
+          env:
+            - name: SPRING_APPLICATION_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: microservices-configmap
+                  key: EUREKA_APPLICATION_NAME
+            - name: SPRING_CONFIG_IMPORT
+              valueFrom:
+                configMapKeyRef:
+                  name: microservices-configmap
+                  key: SPRING_CONFIG_IMPORT
+          imagePullSecrets:
+            secret: microservices-secret
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: eurekaserver
+spec:
+  selector:
+    app: eurekaserver
+  type: ClusterIP
+  ports:
+    - protocol: TCP
+      port: 8070
+      targetPort: 8070
