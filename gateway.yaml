@@ -22,27 +22,27 @@ spec:
           env:
             - name: SPRING_APPLICATION_NAME
               valueFrom:
-                configMapKey:
+                configMapKeyRef:
                   name: microservices-configmap
                   key: GATEWAY_APPLICATION_NAME
             - name: SPRING_PROFILES_ACTIVE
               valueFrom:
-                configMapKey:
+                configMapKeyRef:
                   name: microservices-configmap
                   key: SPRING_PROFILES_ACTIVE
             - name: SPRING_CONFIG_IMPORT
               valueFrom:
-                configMapKey:
+                configMapKeyRef:
                   name: microservices-configmap
                   key: SPRING_CONFIG_IMPORT
             - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
               valueFrom:
-                configMapKey:
+                configMapKeyRef:
                   name: microservices-configmap
                   key: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
-            - name:
+            - name: SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_JWK-SET-URI
               valueFrom:
-                configMapKey:
+                configMapKeyRef:
                   name: microservices-configmap
                   key: SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_JWK-SET-URI
 ---

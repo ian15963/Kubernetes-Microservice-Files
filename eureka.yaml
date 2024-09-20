@@ -30,9 +30,6 @@ spec:
                 configMapKeyRef:
                   name: microservices-configmap
                   key: SPRING_CONFIG_IMPORT
-          imagePullSecrets:
-            secret: microservices-secret
-
 ---
 
 apiVersion: v1
